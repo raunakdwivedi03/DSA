@@ -5,7 +5,7 @@ public:
         int maxCount=0;
         int count=0;
         int i=0;
-         while(i<=n){
+         while(i<n){
          if(nums[i]==1){
          count++;
           
