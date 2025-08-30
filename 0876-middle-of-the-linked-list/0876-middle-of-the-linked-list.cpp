@@ -10,29 +10,19 @@
  */
 class Solution {
 public:
-
-  
     ListNode* middleNode(ListNode* head) {
-        if(head ==NULL)
-        return NULL;
- 
-       ListNode* temp=head;
-        stack<ListNode*>st;
-        
-        int count=0;
-        while(temp!=NULL){
-        st.push(temp);
-        temp=temp->next;
-        count++;
-}
-       
-       int mid=count/2;
+        if(head == NULL){
+            return NULL;
+        }
 
-         temp=head;
-       for(int i=0;i<mid;i++){
-        temp=temp->next;
-       }
+        ListNode* Prev =NULL;
+        ListNode* slow =head;
+        ListNode* fast =head;
 
-       return temp;
+        while( fast !=NULL && fast->next != NULL){
+            slow=slow->next;
+            fast= fast->next->next;
+        }
+         return slow;
     }
 };
