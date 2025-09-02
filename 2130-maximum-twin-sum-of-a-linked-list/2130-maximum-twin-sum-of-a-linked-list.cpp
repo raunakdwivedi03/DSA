@@ -11,22 +11,23 @@
 class Solution {
 public:
     int pairSum(ListNode* head) {
-        vector<int>vector;
+        stack<int>st;
+         ListNode* curr=head;
       
-      ListNode* curr= head;
-
-      while(curr != NULL){
-        vector.push_back(curr->val);
-        curr=curr->next;
-      }
-      int result=0;
-      int i=0;
-      int j=vector.size()-1;
-      while(i<j){
-        result=max(result,vector[i]+vector[j]);
-        i++;
-        j--;
-      }
-      return result; 
-      }
+         while(curr != NULL){
+            st.push(curr->val);
+            curr=curr->next;
+         }
+         int n=st.size();
+         curr=head;
+         
+          int sum=0;
+           for(int i = 0; i < n/2; i++){
+            sum = max(sum, curr->val + st.top());
+            curr = curr->next;
+            st.pop();
+        }
+          return sum;   
+        
+    }
 };
